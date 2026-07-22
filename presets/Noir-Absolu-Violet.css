@@ -1,0 +1,17 @@
+/**
+ * @name Noir Absolu Violet - Absolute Black Purple
+ * @author woozyfps.
+ * @authorLink https://wooptimisation.pro
+ * @website https://wooptimisation.pro
+ * @source https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Violet.css
+ * @description True-black AMOLED Discord theme with the purple accent preset. / Thème Discord AMOLED noir profond avec le préréglage violet.
+ * @version 1.3.0
+ */
+
+@import url("https://woozyontop.github.io/Noir-Absolu-Theme/Noir-Absolu.theme.css");
+
+:root {
+  --noir-accent-hue: 264;
+  --noir-accent-saturation: 100%;
+  --noir-accent-lightness: 72%;
+}
