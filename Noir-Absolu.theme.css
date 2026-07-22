@@ -5,7 +5,7 @@
  * @website https://wooptimisation.pro
  * @source https://raw.githubusercontent.com/wOoZyOnTop/Noir-Absolu-Theme/main/Noir-Absolu.theme.css
  * @description True-black AMOLED Discord theme with a customizable accent. / Thème Discord AMOLED noir profond avec accent personnalisable.
- * @version 1.3.0
+ * @version 1.3.1
  */
 
 /*
@@ -471,4 +471,12 @@ body,
 #app-mount :focus-visible {
   outline: 2px solid var(--noir-accent) !important;
   outline-offset: 2px !important;
+}
+
+/* L'éditeur Slate rogne son contour de focus et n'en laisse voir que deux barres verticales. */
+#app-mount :is(
+  [data-slate-editor="true"],
+  [contenteditable="true"][role="textbox"]
+):focus-visible {
+  outline: none !important;
 }
