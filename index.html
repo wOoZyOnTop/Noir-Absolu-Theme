@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Choisissez et téléchargez Noir Absolu dans la couleur de votre choix, sans modifier le CSS.">
+  <title>Noir Absolu — Sélecteur de couleurs</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --page: #000;
+      --surface: #08080b;
+      --surface-raised: #101015;
+      --border: #25252f;
+      --border-hover: #3a3a48;
+      --text: #f7f7fb;
+      --muted: #a7a7b3;
+      --brand: #a970ff;
+      --brand-soft: rgba(169, 112, 255, .16);
+      --shadow: 0 24px 80px rgba(0, 0, 0, .72);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 50% -15%, rgba(169, 112, 255, .18), transparent 36rem),
+        var(--page);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    :focus-visible {
+      outline: 3px solid var(--brand);
+      outline-offset: 3px;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 20px;
+      height: 20px;
+      border: 5px solid var(--brand);
+      border-radius: 50%;
+      box-shadow: 0 0 24px rgba(169, 112, 255, .55);
+    }
+
+    .github-link {
+      color: var(--muted);
+      font-size: .92rem;
+      font-weight: 700;
+      text-underline-offset: 4px;
+    }
+
+    .hero {
+      display: grid;
+      justify-items: center;
+      padding: 72px 0 52px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      padding: 7px 12px;
+      border: 1px solid rgba(169, 112, 255, .35);
+      border-radius: 999px;
+      background: var(--brand-soft);
+      color: #d8bdff;
+      font-size: .78rem;
+      font-weight: 850;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(2.65rem, 8vw, 6.2rem);
+      line-height: .96;
+      letter-spacing: -.065em;
+    }
+
+    .gradient-text {
+      color: transparent;
+      background: linear-gradient(100deg, #fff 12%, #cba7ff 58%, #7ec8ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .lead {
+      max-width: 690px;
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 18px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface-raised);
+      color: var(--text);
+      font: inherit;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .16s ease, border-color .16s ease, background .16s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-hover);
+      background: #17171e;
+    }
+
+    .button-primary {
+      border-color: transparent;
+      background: var(--brand);
+      color: #08050d;
+      box-shadow: 0 12px 36px rgba(169, 112, 255, .28);
+    }
+
+    .button-primary:hover { background: #bc91ff; }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin: 26px 0 20px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.55rem, 4vw, 2.35rem);
+      letter-spacing: -.04em;
+    }
+
+    .section-heading p {
+      max-width: 540px;
+      margin: 0;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .color-card {
+      --accent: #a970ff;
+      position: relative;
+      overflow: hidden;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: linear-gradient(150deg, color-mix(in srgb, var(--accent) 8%, var(--surface-raised)), var(--surface) 56%);
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, border-color .18s ease;
+    }
+
+    .color-card::before {
+      position: absolute;
+      inset: -80px -70px auto auto;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: var(--accent);
+      content: "";
+      filter: blur(65px);
+      opacity: .22;
+      pointer-events: none;
+    }
+
+    .color-card:hover {
+      transform: translateY(-4px);
+      border-color: color-mix(in srgb, var(--accent) 58%, var(--border));
+    }
+
+    .swatch {
+      display: block;
+      width: 42px;
+      height: 42px;
+      border: 8px solid rgba(255, 255, 255, .12);
+      border-radius: 50%;
+      background: var(--accent);
+      background-clip: padding-box;
+      box-shadow: 0 0 28px color-mix(in srgb, var(--accent) 42%, transparent);
+    }
+
+    .color-card h3 {
+      margin: 18px 0 1px;
+      font-size: 1.18rem;
+      letter-spacing: -.025em;
+    }
+
+    .english-name {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .card-actions {
+      display: grid;
+      gap: 8px;
+    }
+
+    .card-actions .button {
+      width: 100%;
+      min-height: 42px;
+      padding: 0 12px;
+      border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+      font-size: .86rem;
+    }
+
+    .card-actions .download {
+      background: var(--accent);
+      color: #050507;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 70px 0 88px;
+    }
+
+    .step {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface);
+    }
+
+    .step-number {
+      display: grid;
+      width: 32px;
+      height: 32px;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--brand-soft);
+      color: #d8bdff;
+      font-weight: 900;
+    }
+
+    .step h3 { margin: 16px 0 7px; }
+    .step p { margin: 0; color: var(--muted); font-size: .92rem; }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px 0 42px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 10;
+      padding: 12px 16px;
+      border: 1px solid rgba(169, 112, 255, .45);
+      border-radius: 12px;
+      background: #15121c;
+      box-shadow: var(--shadow);
+      color: #eadfff;
+      font-weight: 750;
+      opacity: 0;
+      transform: translateY(14px);
+      pointer-events: none;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+
+    .toast.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section-heading { align-items: start; flex-direction: column; }
+      .section-heading p { text-align: left; }
+    }
+
+    @media (max-width: 620px) {
+      .shell { width: min(100% - 22px, 1180px); }
+      .hero { padding: 50px 0 40px; }
+      .grid, .steps { grid-template-columns: 1fr; }
+      .github-link { font-size: 0; }
+      .github-link::after { content: "GitHub"; font-size: .9rem; }
+      footer { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="#top" aria-label="Noir Absolu, retour en haut">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Noir Absolu
+    </a>
+    <a class="github-link" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme">Voir le projet sur GitHub</a>
+  </header>
+
+  <main id="top" class="shell">
+    <section class="hero">
+      <p class="eyebrow">BetterDiscord + Vencord</p>
+      <h1>Le noir absolu.<br><span class="gradient-text">Ta couleur.</span></h1>
+      <p class="lead">Choisis une couleur, télécharge-la et active-la dans Discord. Aucun fichier à ouvrir, aucune ligne de CSS à modifier.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#colors">Choisir une couleur</a>
+        <a class="button" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Toutes-les-couleurs.zip">Télécharger les 8 couleurs</a>
+      </div>
+    </section>
+
+    <section id="colors" aria-labelledby="colors-title">
+      <div class="section-heading">
+        <h2 id="colors-title">Huit couleurs, un seul thème</h2>
+        <p>Télécharge le fichier pour BetterDiscord ou copie le lien prêt à coller dans les thèmes en ligne de Vencord.</p>
+      </div>
+
+      <div class="grid">
+        <article class="color-card" style="--accent:#a970ff">
+          <span class="swatch" aria-hidden="true"></span><h3>Violet</h3><p class="english-name">Purple</p>
+          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Violet.theme.css">Télécharger</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Violet.css">Copier le lien Vencord</button></div>
+        </article>
+        <article class="color-card" style="--accent:#52a8ff">
+          <span class="swatch" aria-hidden="true"></span><h3>Bleu</h3><p class="english-name">Blue</p>
+          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Bleu.theme.css">Télécharger</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Bleu.css">Copier le lien Vencord</button></div>
+        </article>
+        <article class="color-card" style="--accent:#ff5c73">
+          <span class="swatch" aria-hidden="true"></span><h3>Rouge</h3><p class="english-name">Red</p>
+          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Rouge.theme.css">Télécharger</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Rouge.css">Copier le lien Vencord</button></div>
+        </article>
+        <article class="color-card" style="--accent:#ff8a3d">
+          <span class="swatch" aria-hidden="true"></span><h3>Orange</h3><p class="english-name">Orange</p>
+          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Orange.theme.css">Télécharger</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Orange.css">Copier le lien Vencord</button></div>
+        </article>
+        <article class="color-card" style="--accent:#f2c94c">
+          <span class="swatch" aria-hidden="true"></span><h3>Jaune</h3><p class="english-name">Yellow</p>
+          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Jaune.theme.css">Télécharger</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Jaune.css">Copier le lien Vencord</button></div>
+        </article>
+        <article class="color-card" style="--accent:#39d98a">
+          <span class="swatch" aria-hidden="true"></span><h3>Vert</h3><p class="english-name">Green</p>
+          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Vert.theme.css">Télécharger</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Vert.css">Copier le lien Vencord</button></div>
+        </article>
+        <article class="color-card" style="--accent:#35d0e6">
+          <span class="swatch" aria-hidden="true"></span><h3>Cyan</h3><p class="english-name">Cyan</p>
+          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Cyan.theme.css">Télécharger</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Cyan.css">Copier le lien Vencord</button></div>
+        </article>
+        <article class="color-card" style="--accent:#ff5fb2">
+          <span class="swatch" aria-hidden="true"></span><h3>Rose</h3><p class="english-name">Pink</p>
+          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Rose.theme.css">Télécharger</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Rose.css">Copier le lien Vencord</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="steps" aria-label="Installation rapide">
+      <article class="step"><span class="step-number">1</span><h3>Télécharge</h3><p>Choisis une couleur ci-dessus ou récupère le pack complet.</p></article>
+      <article class="step"><span class="step-number">2</span><h3>Installe</h3><p>Place le fichier dans le dossier Themes de BetterDiscord ou Vencord.</p></article>
+      <article class="step"><span class="step-number">3</span><h3>Active</h3><p>Active une seule couleur Noir Absolu. Les futures corrections du cœur seront automatiques.</p></article>
+    </section>
+  </main>
+
+  <footer class="shell"><span>Noir Absolu / Absolute Black</span><span>woozyfps. · <a href="https://wooptimisation.pro">wooptimisation.pro</a></span></footer>
+  <div class="toast" role="status" aria-live="polite">Lien Vencord copié.</div>
+
+  <script>
+    const toast = document.querySelector('.toast');
+    let toastTimer;
+
+    async function copyText(value) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(value);
+        return;
+      }
+
+      const input = document.createElement('textarea');
+      input.value = value;
+      input.setAttribute('readonly', '');
+      input.style.position = 'fixed';
+      input.style.opacity = '0';
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      input.remove();
+    }
+
+    document.querySelectorAll('.copy').forEach((button) => {
+      button.addEventListener('click', async () => {
+        try {
+          await copyText(button.dataset.url);
+          clearTimeout(toastTimer);
+          toast.classList.add('visible');
+          button.textContent = 'Lien copié ✓';
+          toastTimer = setTimeout(() => {
+            toast.classList.remove('visible');
+            button.textContent = 'Copier le lien Vencord';
+          }, 2200);
+        } catch {
+          toast.textContent = 'Impossible de copier automatiquement.';
+          toast.classList.add('visible');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

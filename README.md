@@ -1,63 +1,59 @@
 # Noir Absolu / Absolute Black
 
-A true-black AMOLED theme for Discord with readable surfaces, compact scrollbars, clear interactive states, and a customizable accent color.  
-Un thème Discord AMOLED en noir absolu, avec des surfaces lisibles, des barres de défilement compactes, des états interactifs clairs et une couleur d’accent personnalisable.
+A true-black AMOLED theme for Discord, available in eight ready-to-use colors. No CSS editing is required.  
+Un thème Discord AMOLED en noir absolu, disponible en huit couleurs prêtes à l’emploi. Aucune modification CSS n’est nécessaire.
 
-## Download / Téléchargement
+## Choose a color / Choisir une couleur
 
-Download [`Noir-Absolu.theme.css`](./Noir-Absolu.theme.css). This is the only theme file required.  
-Téléchargez [`Noir-Absolu.theme.css`](./Noir-Absolu.theme.css). C’est le seul fichier de thème nécessaire.
+### [Open the color selector / Ouvrir le sélecteur de couleurs](https://woozyontop.github.io/Noir-Absolu-Theme/)
 
-## Features / Fonctionnalités
+### [Download all eight colors / Télécharger les huit couleurs](https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Toutes-les-couleurs.zip)
 
-- True OLED black (`#000000`) across Discord’s main surfaces
-- Neutral raised surfaces that keep text, controls, and popouts readable
-- Custom styling for links, mentions, replies, selections, buttons, borders, and focus states
-- Compact scrollbars and a completely black voice/user panel area
-- One configurable accent with eight ready-to-use presets
-- Compatible with BetterDiscord and Vencord
-- No remote CSS imports
+| Color / Couleur | Preview / Aperçu | Direct download / Téléchargement direct |
+|---|---:|---|
+| Violet / Purple | `#a970ff` | [Download / Télécharger](https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Violet.theme.css) |
+| Bleu / Blue | `#52a8ff` | [Download / Télécharger](https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Bleu.theme.css) |
+| Rouge / Red | `#ff5c73` | [Download / Télécharger](https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Rouge.theme.css) |
+| Orange | `#ff8a3d` | [Download / Télécharger](https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Orange.theme.css) |
+| Jaune / Yellow | `#f2c94c` | [Download / Télécharger](https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Jaune.theme.css) |
+| Vert / Green | `#39d98a` | [Download / Télécharger](https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Vert.theme.css) |
+| Cyan | `#35d0e6` | [Download / Télécharger](https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Cyan.theme.css) |
+| Rose / Pink | `#ff5fb2` | [Download / Télécharger](https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Rose.theme.css) |
 
 ## Installation
 
 ### BetterDiscord
 
-1. Download `Noir-Absolu.theme.css`.
-2. Open `Discord Settings > BetterDiscord > Themes`.
-3. Place the file in the themes folder and enable **Noir Absolu - Absolute Black**.
+1. Download one color, or download and extract the complete pack.
+2. Open `Discord Settings > BetterDiscord > Themes > Open Themes Folder`.
+3. Place the downloaded `.theme.css` files in that folder.
+4. Enable the color you want and keep the other Noir Absolu colors disabled.
 
-### Vencord
+### Vencord — local files / fichiers locaux
 
-1. Téléchargez `Noir-Absolu.theme.css`.
-2. Ouvrez `Paramètres Discord > Vencord > Themes`.
-3. Placez le fichier dans le dossier des thèmes, puis activez **Noir Absolu - Absolute Black**.
+1. Téléchargez une couleur, ou téléchargez puis extrayez le pack complet.
+2. Ouvrez `Paramètres Discord > Vencord > Themes > Open Themes Folder`.
+3. Placez les fichiers `.theme.css` dans ce dossier.
+4. Activez la couleur souhaitée et laissez les autres couleurs Noir Absolu désactivées.
 
-## Accent presets / Préréglages de couleur
+### Vencord — Online Themes
 
-Violet is enabled by default. To keep your choice across theme updates, paste one preset into BetterDiscord **Custom CSS** or Vencord **QuickCSS**.  
-Le violet est activé par défaut. Pour conserver votre choix après les mises à jour, collez un préréglage dans le **Custom CSS** de BetterDiscord ou le **QuickCSS** de Vencord.
+Open the [color selector](https://woozyontop.github.io/Noir-Absolu-Theme/), copy the Vencord link for your color, then paste it into `Vencord > Themes > Online Themes`.  
+Ouvrez le [sélecteur de couleurs](https://woozyontop.github.io/Noir-Absolu-Theme/), copiez le lien Vencord de votre couleur, puis collez-le dans `Vencord > Themes > Online Themes`.
 
-| Preset / Préréglage | Hue / Teinte | Saturation | Lightness / Luminosité | Reference |
-|---|---:|---:|---:|---:|
-| Violet / Purple | `264` | `100%` | `72%` | `#a970ff` |
-| Bleu / Blue | `210` | `100%` | `66%` | `#52a8ff` |
-| Rouge / Red | `352` | `100%` | `68%` | `#ff5c73` |
-| Orange | `24` | `100%` | `62%` | `#ff8a3d` |
-| Jaune / Yellow | `45` | `86%` | `62%` | `#f2c94c` |
-| Vert / Green | `150` | `68%` | `54%` | `#39d98a` |
-| Cyan | `187` | `78%` | `55%` | `#35d0e6` |
-| Rose / Pink | `329` | `100%` | `69%` | `#ff5fb2` |
+## Features / Fonctionnalités
 
-Replace the three values below with the row you want.  
-Remplacez les trois valeurs ci-dessous par celles de la ligne souhaitée.
+- True OLED black (`#000000`) across Discord’s main surfaces
+- Eight preconfigured accent colors with automatic core updates
+- Compact scrollbars and a completely black voice/user panel area
+- Clear styling for links, mentions, replies, selections, buttons, borders, and focus states
+- Compatible with BetterDiscord and Vencord
+- One shared theme core, so fixes apply to every color
 
-```css
-:root {
-  --noir-accent-hue: 264;
-  --noir-accent-saturation: 100%;
-  --noir-accent-lightness: 72%;
-}
-```
+## Important
+
+Enable only one Noir Absolu color at a time. If several variants are enabled, their accent settings can conflict.  
+Activez une seule couleur Noir Absolu à la fois. Si plusieurs variantes sont actives, leurs couleurs d’accent peuvent entrer en conflit.
 
 ## Credits / Crédits
 
