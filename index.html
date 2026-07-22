@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#000000">
-  <meta name="description" content="Choisissez et téléchargez Noir Absolu dans la couleur de votre choix, sans modifier le CSS.">
-  <title>Noir Absolu — Sélecteur de couleurs</title>
+  <meta name="description" content="Choose and download Noir Absolu in your preferred color without editing CSS.">
+  <title>Noir Absolu — Color selector</title>
   <style>
     :root {
       color-scheme: dark;
@@ -82,6 +82,29 @@
       font-weight: 700;
       text-underline-offset: 4px;
     }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .language-select {
+      min-height: 38px;
+      max-width: 150px;
+      padding: 0 34px 0 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface-raised);
+      color: var(--text);
+      font: inherit;
+      font-size: .88rem;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .language-select:hover { border-color: var(--border-hover); }
+    .language-select option { background: var(--surface-raised); color: var(--text); }
 
     .hero {
       display: grid;
@@ -240,7 +263,7 @@
       letter-spacing: -.025em;
     }
 
-    .english-name {
+    .color-subtitle {
       margin: 0 0 18px;
       color: var(--muted);
       font-size: .88rem;
@@ -330,8 +353,11 @@
 
     @media (max-width: 620px) {
       .shell { width: min(100% - 22px, 1180px); }
+      .topbar { flex-wrap: wrap; }
       .hero { padding: 50px 0 40px; }
       .grid, .steps { grid-template-columns: 1fr; }
+      .topbar-actions { gap: 8px; margin-left: auto; }
+      .language-select { max-width: 120px; }
       .github-link { font-size: 0; }
       .github-link::after { content: "GitHub"; font-size: .9rem; }
       footer { flex-direction: column; }
@@ -345,79 +371,491 @@
 </head>
 <body>
   <header class="shell topbar">
-    <a class="brand" href="#top" aria-label="Noir Absolu, retour en haut">
+    <a class="brand" href="#top" aria-label="Noir Absolu, back to top" data-i18n-aria-label="nav.brandHome">
       <span class="brand-mark" aria-hidden="true"></span>
       Noir Absolu
     </a>
-    <a class="github-link" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme">Voir le projet sur GitHub</a>
+    <div class="topbar-actions">
+      <a class="github-link" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme" data-i18n="nav.github">View the project on GitHub</a>
+      <select id="language-select" class="language-select" aria-label="Choose language" data-i18n-aria-label="language.label">
+        <option value="auto" data-i18n="language.auto">Automatic</option>
+        <option value="fr">Français</option>
+        <option value="en">English</option>
+        <option value="de">Deutsch</option>
+        <option value="es">Español</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Português</option>
+        <option value="nl">Nederlands</option>
+        <option value="pl">Polski</option>
+      </select>
+    </div>
   </header>
 
   <main id="top" class="shell">
     <section class="hero">
-      <p class="eyebrow">BetterDiscord + Vencord</p>
-      <h1>Le noir absolu.<br><span class="gradient-text">Ta couleur.</span></h1>
-      <p class="lead">Choisis une couleur, télécharge-la et active-la dans Discord. Aucun fichier à ouvrir, aucune ligne de CSS à modifier.</p>
+      <p class="eyebrow" data-i18n="hero.eyebrow">BetterDiscord + Vencord</p>
+      <h1><span data-i18n="hero.titleLine1">Absolute black.</span><br><span class="gradient-text" data-i18n="hero.titleLine2">Your color.</span></h1>
+      <p class="lead" data-i18n="hero.lead">Choose a color, download it, and enable it in Discord. No files to open and no CSS to edit.</p>
       <div class="hero-actions">
-        <a class="button button-primary" href="#colors">Choisir une couleur</a>
-        <a class="button" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Toutes-les-couleurs.zip">Télécharger les 8 couleurs</a>
+        <a class="button button-primary" href="#colors" data-i18n="actions.chooseColor">Choose a color</a>
+        <a class="button" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Toutes-les-couleurs.zip" data-i18n="actions.downloadAll">Download all 8 colors</a>
       </div>
     </section>
 
     <section id="colors" aria-labelledby="colors-title">
       <div class="section-heading">
-        <h2 id="colors-title">Huit couleurs, un seul thème</h2>
-        <p>Télécharge le fichier pour BetterDiscord ou copie le lien prêt à coller dans les thèmes en ligne de Vencord.</p>
+        <h2 id="colors-title" data-i18n="colors.heading">Eight colors, one theme</h2>
+        <p data-i18n="colors.description">Download the file for BetterDiscord or copy the ready-to-use URL into Vencord's online themes.</p>
       </div>
 
       <div class="grid">
-        <article class="color-card" style="--accent:#a970ff">
-          <span class="swatch" aria-hidden="true"></span><h3>Violet</h3><p class="english-name">Purple</p>
-          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Violet.theme.css">Télécharger</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Violet.css">Copier le lien Vencord</button></div>
+        <article class="color-card" data-color="violet" style="--accent:#a970ff">
+          <span class="swatch" aria-hidden="true"></span><h3 data-color-name>Purple</h3><p class="color-subtitle" data-color-subtitle>Purple accent</p>
+          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Violet.theme.css" data-i18n="actions.download">Download</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Violet.css" data-i18n="actions.copyVencord">Copy Vencord link</button></div>
         </article>
-        <article class="color-card" style="--accent:#52a8ff">
-          <span class="swatch" aria-hidden="true"></span><h3>Bleu</h3><p class="english-name">Blue</p>
-          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Bleu.theme.css">Télécharger</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Bleu.css">Copier le lien Vencord</button></div>
+        <article class="color-card" data-color="blue" style="--accent:#52a8ff">
+          <span class="swatch" aria-hidden="true"></span><h3 data-color-name>Blue</h3><p class="color-subtitle" data-color-subtitle>Blue accent</p>
+          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Bleu.theme.css" data-i18n="actions.download">Download</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Bleu.css" data-i18n="actions.copyVencord">Copy Vencord link</button></div>
         </article>
-        <article class="color-card" style="--accent:#ff5c73">
-          <span class="swatch" aria-hidden="true"></span><h3>Rouge</h3><p class="english-name">Red</p>
-          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Rouge.theme.css">Télécharger</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Rouge.css">Copier le lien Vencord</button></div>
+        <article class="color-card" data-color="red" style="--accent:#ff5c73">
+          <span class="swatch" aria-hidden="true"></span><h3 data-color-name>Red</h3><p class="color-subtitle" data-color-subtitle>Red accent</p>
+          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Rouge.theme.css" data-i18n="actions.download">Download</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Rouge.css" data-i18n="actions.copyVencord">Copy Vencord link</button></div>
         </article>
-        <article class="color-card" style="--accent:#ff8a3d">
-          <span class="swatch" aria-hidden="true"></span><h3>Orange</h3><p class="english-name">Orange</p>
-          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Orange.theme.css">Télécharger</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Orange.css">Copier le lien Vencord</button></div>
+        <article class="color-card" data-color="orange" style="--accent:#ff8a3d">
+          <span class="swatch" aria-hidden="true"></span><h3 data-color-name>Orange</h3><p class="color-subtitle" data-color-subtitle>Orange accent</p>
+          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Orange.theme.css" data-i18n="actions.download">Download</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Orange.css" data-i18n="actions.copyVencord">Copy Vencord link</button></div>
         </article>
-        <article class="color-card" style="--accent:#f2c94c">
-          <span class="swatch" aria-hidden="true"></span><h3>Jaune</h3><p class="english-name">Yellow</p>
-          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Jaune.theme.css">Télécharger</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Jaune.css">Copier le lien Vencord</button></div>
+        <article class="color-card" data-color="yellow" style="--accent:#f2c94c">
+          <span class="swatch" aria-hidden="true"></span><h3 data-color-name>Yellow</h3><p class="color-subtitle" data-color-subtitle>Yellow accent</p>
+          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Jaune.theme.css" data-i18n="actions.download">Download</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Jaune.css" data-i18n="actions.copyVencord">Copy Vencord link</button></div>
         </article>
-        <article class="color-card" style="--accent:#39d98a">
-          <span class="swatch" aria-hidden="true"></span><h3>Vert</h3><p class="english-name">Green</p>
-          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Vert.theme.css">Télécharger</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Vert.css">Copier le lien Vencord</button></div>
+        <article class="color-card" data-color="green" style="--accent:#39d98a">
+          <span class="swatch" aria-hidden="true"></span><h3 data-color-name>Green</h3><p class="color-subtitle" data-color-subtitle>Green accent</p>
+          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Vert.theme.css" data-i18n="actions.download">Download</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Vert.css" data-i18n="actions.copyVencord">Copy Vencord link</button></div>
         </article>
-        <article class="color-card" style="--accent:#35d0e6">
-          <span class="swatch" aria-hidden="true"></span><h3>Cyan</h3><p class="english-name">Cyan</p>
-          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Cyan.theme.css">Télécharger</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Cyan.css">Copier le lien Vencord</button></div>
+        <article class="color-card" data-color="cyan" style="--accent:#35d0e6">
+          <span class="swatch" aria-hidden="true"></span><h3 data-color-name>Cyan</h3><p class="color-subtitle" data-color-subtitle>Cyan accent</p>
+          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Cyan.theme.css" data-i18n="actions.download">Download</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Cyan.css" data-i18n="actions.copyVencord">Copy Vencord link</button></div>
         </article>
-        <article class="color-card" style="--accent:#ff5fb2">
-          <span class="swatch" aria-hidden="true"></span><h3>Rose</h3><p class="english-name">Pink</p>
-          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Rose.theme.css">Télécharger</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Rose.css">Copier le lien Vencord</button></div>
+        <article class="color-card" data-color="pink" style="--accent:#ff5fb2">
+          <span class="swatch" aria-hidden="true"></span><h3 data-color-name>Pink</h3><p class="color-subtitle" data-color-subtitle>Pink accent</p>
+          <div class="card-actions"><a class="button download" href="https://github.com/wOoZyOnTop/Noir-Absolu-Theme/releases/latest/download/Noir-Absolu-Rose.theme.css" data-i18n="actions.download">Download</a><button class="button copy" data-url="https://woozyontop.github.io/Noir-Absolu-Theme/presets/Noir-Absolu-Rose.css" data-i18n="actions.copyVencord">Copy Vencord link</button></div>
         </article>
       </div>
     </section>
 
-    <section class="steps" aria-label="Installation rapide">
-      <article class="step"><span class="step-number">1</span><h3>Télécharge</h3><p>Choisis une couleur ci-dessus ou récupère le pack complet.</p></article>
-      <article class="step"><span class="step-number">2</span><h3>Installe</h3><p>Place le fichier dans le dossier Themes de BetterDiscord ou Vencord.</p></article>
-      <article class="step"><span class="step-number">3</span><h3>Active</h3><p>Active une seule couleur Noir Absolu. Les futures corrections du cœur seront automatiques.</p></article>
+    <section class="steps" aria-label="Quick installation" data-i18n-aria-label="steps.ariaLabel">
+      <article class="step"><span class="step-number">1</span><h3 data-i18n="steps.download.title">Download</h3><p data-i18n="steps.download.text">Choose a color above or get the complete pack.</p></article>
+      <article class="step"><span class="step-number">2</span><h3 data-i18n="steps.install.title">Install</h3><p data-i18n="steps.install.text">Place the file in the BetterDiscord or Vencord Themes folder.</p></article>
+      <article class="step"><span class="step-number">3</span><h3 data-i18n="steps.activate.title">Enable</h3><p data-i18n="steps.activate.text">Enable only one Noir Absolu color. Future core fixes will be applied automatically.</p></article>
     </section>
   </main>
 
   <footer class="shell"><span>Noir Absolu / Absolute Black</span><span>woozyfps. · <a href="https://wooptimisation.pro">wooptimisation.pro</a></span></footer>
-  <div class="toast" role="status" aria-live="polite">Lien Vencord copié.</div>
+  <div class="toast" role="status" aria-live="polite" data-i18n="toast.copied">Vencord link copied.</div>
 
   <script>
+    const I18N = {
+      en: {
+        'meta.title': 'Noir Absolu — Color selector',
+        'meta.description': 'Choose and download Noir Absolu in your preferred color without editing CSS.',
+        'language.label': 'Choose language',
+        'language.auto': 'Automatic',
+        'nav.brandHome': 'Noir Absolu, back to top',
+        'nav.github': 'View the project on GitHub',
+        'hero.eyebrow': 'BetterDiscord + Vencord',
+        'hero.titleLine1': 'Absolute black.',
+        'hero.titleLine2': 'Your color.',
+        'hero.lead': 'Choose a color, download it, and enable it in Discord. No files to open and no CSS to edit.',
+        'actions.chooseColor': 'Choose a color',
+        'actions.downloadAll': 'Download all 8 colors',
+        'colors.heading': 'Eight colors, one theme',
+        'colors.description': "Download the file for BetterDiscord or copy the ready-to-use URL into Vencord's online themes.",
+        'actions.download': 'Download',
+        'actions.copyVencord': 'Copy Vencord link',
+        'actions.copied': 'Link copied ✓',
+        'actions.downloadColor': 'Download the {color} theme',
+        'actions.copyColor': 'Copy the Vencord link for the {color} theme',
+        'steps.ariaLabel': 'Quick installation',
+        'steps.download.title': 'Download',
+        'steps.download.text': 'Choose a color above or get the complete pack.',
+        'steps.install.title': 'Install',
+        'steps.install.text': 'Place the file in the BetterDiscord or Vencord Themes folder.',
+        'steps.activate.title': 'Enable',
+        'steps.activate.text': 'Enable only one Noir Absolu color. Future core fixes will be applied automatically.',
+        'toast.copied': 'Vencord link copied.',
+        'toast.copyFailed': 'Unable to copy automatically.',
+        'colors.subtitle': '{color} accent',
+        'colors.violet.name': 'Purple',
+        'colors.blue.name': 'Blue',
+        'colors.red.name': 'Red',
+        'colors.orange.name': 'Orange',
+        'colors.yellow.name': 'Yellow',
+        'colors.green.name': 'Green',
+        'colors.cyan.name': 'Cyan',
+        'colors.pink.name': 'Pink'
+      },
+      fr: {
+        'meta.title': 'Noir Absolu — Sélecteur de couleurs',
+        'meta.description': 'Choisissez et téléchargez Noir Absolu dans la couleur de votre choix, sans modifier le CSS.',
+        'language.label': 'Choisir la langue',
+        'language.auto': 'Automatique',
+        'nav.brandHome': 'Noir Absolu, retour en haut',
+        'nav.github': 'Voir le projet sur GitHub',
+        'hero.eyebrow': 'BetterDiscord + Vencord',
+        'hero.titleLine1': 'Le noir absolu.',
+        'hero.titleLine2': 'Ta couleur.',
+        'hero.lead': 'Choisis une couleur, télécharge-la et active-la dans Discord. Aucun fichier à ouvrir, aucune ligne de CSS à modifier.',
+        'actions.chooseColor': 'Choisir une couleur',
+        'actions.downloadAll': 'Télécharger les 8 couleurs',
+        'colors.heading': 'Huit couleurs, un seul thème',
+        'colors.description': 'Télécharge le fichier pour BetterDiscord ou copie le lien prêt à coller dans les thèmes en ligne de Vencord.',
+        'actions.download': 'Télécharger',
+        'actions.copyVencord': 'Copier le lien Vencord',
+        'actions.copied': 'Lien copié ✓',
+        'actions.downloadColor': 'Télécharger le thème {color}',
+        'actions.copyColor': 'Copier le lien Vencord du thème {color}',
+        'steps.ariaLabel': 'Installation rapide',
+        'steps.download.title': 'Télécharge',
+        'steps.download.text': 'Choisis une couleur ci-dessus ou récupère le pack complet.',
+        'steps.install.title': 'Installe',
+        'steps.install.text': 'Place le fichier dans le dossier Themes de BetterDiscord ou Vencord.',
+        'steps.activate.title': 'Active',
+        'steps.activate.text': 'Active une seule couleur Noir Absolu. Les futures corrections du cœur seront automatiques.',
+        'toast.copied': 'Lien Vencord copié.',
+        'toast.copyFailed': 'Impossible de copier automatiquement.',
+        'colors.subtitle': 'Accent {color}',
+        'colors.violet.name': 'Violet',
+        'colors.blue.name': 'Bleu',
+        'colors.red.name': 'Rouge',
+        'colors.orange.name': 'Orange',
+        'colors.yellow.name': 'Jaune',
+        'colors.green.name': 'Vert',
+        'colors.cyan.name': 'Cyan',
+        'colors.pink.name': 'Rose'
+      },
+      de: {
+        'meta.title': 'Noir Absolu — Farbauswahl',
+        'meta.description': 'Wähle Noir Absolu in deiner Lieblingsfarbe und lade es herunter, ohne CSS zu bearbeiten.',
+        'language.label': 'Sprache auswählen',
+        'language.auto': 'Automatisch',
+        'nav.brandHome': 'Noir Absolu, zurück nach oben',
+        'nav.github': 'Projekt auf GitHub ansehen',
+        'hero.eyebrow': 'BetterDiscord + Vencord',
+        'hero.titleLine1': 'Absolutes Schwarz.',
+        'hero.titleLine2': 'Deine Farbe.',
+        'hero.lead': 'Wähle eine Farbe, lade sie herunter und aktiviere sie in Discord. Keine Datei öffnen, kein CSS bearbeiten.',
+        'actions.chooseColor': 'Farbe auswählen',
+        'actions.downloadAll': 'Alle 8 Farben herunterladen',
+        'colors.heading': 'Acht Farben, ein Theme',
+        'colors.description': 'Lade die Datei für BetterDiscord herunter oder kopiere den fertigen Link in Vencords Online-Themes.',
+        'actions.download': 'Herunterladen',
+        'actions.copyVencord': 'Vencord-Link kopieren',
+        'actions.copied': 'Link kopiert ✓',
+        'actions.downloadColor': 'Theme {color} herunterladen',
+        'actions.copyColor': 'Vencord-Link für das Theme {color} kopieren',
+        'steps.ariaLabel': 'Schnellinstallation',
+        'steps.download.title': 'Herunterladen',
+        'steps.download.text': 'Wähle oben eine Farbe oder lade das Komplettpaket herunter.',
+        'steps.install.title': 'Installieren',
+        'steps.install.text': 'Lege die Datei in den Themes-Ordner von BetterDiscord oder Vencord.',
+        'steps.activate.title': 'Aktivieren',
+        'steps.activate.text': 'Aktiviere nur eine Noir-Absolu-Farbe. Künftige Updates des Basisthemes werden automatisch übernommen.',
+        'toast.copied': 'Vencord-Link kopiert.',
+        'toast.copyFailed': 'Automatisches Kopieren nicht möglich.',
+        'colors.subtitle': 'Akzentfarbe: {color}',
+        'colors.violet.name': 'Violett',
+        'colors.blue.name': 'Blau',
+        'colors.red.name': 'Rot',
+        'colors.orange.name': 'Orange',
+        'colors.yellow.name': 'Gelb',
+        'colors.green.name': 'Grün',
+        'colors.cyan.name': 'Cyan',
+        'colors.pink.name': 'Rosa'
+      },
+      es: {
+        'meta.title': 'Noir Absolu — Selector de colores',
+        'meta.description': 'Elige y descarga Noir Absolu en tu color favorito, sin modificar el CSS.',
+        'language.label': 'Elegir idioma',
+        'language.auto': 'Automático',
+        'nav.brandHome': 'Noir Absolu, volver arriba',
+        'nav.github': 'Ver el proyecto en GitHub',
+        'hero.eyebrow': 'BetterDiscord + Vencord',
+        'hero.titleLine1': 'Negro absoluto.',
+        'hero.titleLine2': 'Tu color.',
+        'hero.lead': 'Elige un color, descárgalo y actívalo en Discord. Sin abrir archivos ni modificar una sola línea de CSS.',
+        'actions.chooseColor': 'Elegir un color',
+        'actions.downloadAll': 'Descargar los 8 colores',
+        'colors.heading': 'Ocho colores, un solo tema',
+        'colors.description': 'Descarga el archivo para BetterDiscord o copia el enlace listo para pegar en los temas en línea de Vencord.',
+        'actions.download': 'Descargar',
+        'actions.copyVencord': 'Copiar enlace de Vencord',
+        'actions.copied': 'Enlace copiado ✓',
+        'actions.downloadColor': 'Descargar el tema {color}',
+        'actions.copyColor': 'Copiar el enlace de Vencord del tema {color}',
+        'steps.ariaLabel': 'Instalación rápida',
+        'steps.download.title': 'Descarga',
+        'steps.download.text': 'Elige un color de arriba o descarga el paquete completo.',
+        'steps.install.title': 'Instala',
+        'steps.install.text': 'Coloca el archivo en la carpeta Themes de BetterDiscord o Vencord.',
+        'steps.activate.title': 'Activa',
+        'steps.activate.text': 'Activa un solo color de Noir Absolu. Las futuras correcciones del tema base se aplicarán automáticamente.',
+        'toast.copied': 'Enlace de Vencord copiado.',
+        'toast.copyFailed': 'No se pudo copiar automáticamente.',
+        'colors.subtitle': 'Acento: {color}',
+        'colors.violet.name': 'Violeta',
+        'colors.blue.name': 'Azul',
+        'colors.red.name': 'Rojo',
+        'colors.orange.name': 'Naranja',
+        'colors.yellow.name': 'Amarillo',
+        'colors.green.name': 'Verde',
+        'colors.cyan.name': 'Cian',
+        'colors.pink.name': 'Rosa'
+      },
+      it: {
+        'meta.title': 'Noir Absolu — Selettore colori',
+        'meta.description': 'Scegli e scarica Noir Absolu nel colore che preferisci, senza modificare il CSS.',
+        'language.label': 'Scegli la lingua',
+        'language.auto': 'Automatico',
+        'nav.brandHome': "Noir Absolu, torna all'inizio",
+        'nav.github': 'Vedi il progetto su GitHub',
+        'hero.eyebrow': 'BetterDiscord + Vencord',
+        'hero.titleLine1': 'Nero assoluto.',
+        'hero.titleLine2': 'Il tuo colore.',
+        'hero.lead': 'Scegli un colore, scaricalo e attivalo su Discord. Nessun file da aprire, nessuna riga di CSS da modificare.',
+        'actions.chooseColor': 'Scegli un colore',
+        'actions.downloadAll': 'Scarica gli 8 colori',
+        'colors.heading': 'Otto colori, un solo tema',
+        'colors.description': 'Scarica il file per BetterDiscord oppure copia il link pronto da incollare nei temi online di Vencord.',
+        'actions.download': 'Scarica',
+        'actions.copyVencord': 'Copia il link Vencord',
+        'actions.copied': 'Link copiato ✓',
+        'actions.downloadColor': 'Scarica il tema {color}',
+        'actions.copyColor': 'Copia il link Vencord del tema {color}',
+        'steps.ariaLabel': 'Installazione rapida',
+        'steps.download.title': 'Scarica',
+        'steps.download.text': 'Scegli un colore qui sopra oppure scarica il pacchetto completo.',
+        'steps.install.title': 'Installa',
+        'steps.install.text': 'Inserisci il file nella cartella Themes di BetterDiscord o Vencord.',
+        'steps.activate.title': 'Attiva',
+        'steps.activate.text': 'Attiva un solo colore Noir Absolu. Le future correzioni del tema di base saranno automatiche.',
+        'toast.copied': 'Link Vencord copiato.',
+        'toast.copyFailed': 'Impossibile copiare automaticamente.',
+        'colors.subtitle': 'Accento: {color}',
+        'colors.violet.name': 'Viola',
+        'colors.blue.name': 'Blu',
+        'colors.red.name': 'Rosso',
+        'colors.orange.name': 'Arancione',
+        'colors.yellow.name': 'Giallo',
+        'colors.green.name': 'Verde',
+        'colors.cyan.name': 'Ciano',
+        'colors.pink.name': 'Rosa'
+      },
+      pt: {
+        'meta.title': 'Noir Absolu — Seletor de cores',
+        'meta.description': 'Escolha e baixe o Noir Absolu na sua cor favorita, sem alterar o CSS.',
+        'language.label': 'Escolher idioma',
+        'language.auto': 'Automático',
+        'nav.brandHome': 'Noir Absolu, voltar ao topo',
+        'nav.github': 'Ver o projeto no GitHub',
+        'hero.eyebrow': 'BetterDiscord + Vencord',
+        'hero.titleLine1': 'Preto absoluto.',
+        'hero.titleLine2': 'Sua cor.',
+        'hero.lead': 'Escolha uma cor, baixe e ative no Discord. Sem abrir arquivos nem alterar uma única linha de CSS.',
+        'actions.chooseColor': 'Escolher uma cor',
+        'actions.downloadAll': 'Baixar as 8 cores',
+        'colors.heading': 'Oito cores, um só tema',
+        'colors.description': 'Baixe o arquivo para o BetterDiscord ou copie o link pronto para usar nos temas online do Vencord.',
+        'actions.download': 'Baixar',
+        'actions.copyVencord': 'Copiar link do Vencord',
+        'actions.copied': 'Link copiado ✓',
+        'actions.downloadColor': 'Baixar o tema {color}',
+        'actions.copyColor': 'Copiar o link do Vencord para o tema {color}',
+        'steps.ariaLabel': 'Instalação rápida',
+        'steps.download.title': 'Baixe',
+        'steps.download.text': 'Escolha uma cor acima ou baixe o pacote completo.',
+        'steps.install.title': 'Instale',
+        'steps.install.text': 'Coloque o arquivo na pasta Themes do BetterDiscord ou Vencord.',
+        'steps.activate.title': 'Ative',
+        'steps.activate.text': 'Ative apenas uma cor do Noir Absolu. As futuras correções do tema base serão aplicadas automaticamente.',
+        'toast.copied': 'Link do Vencord copiado.',
+        'toast.copyFailed': 'Não foi possível copiar automaticamente.',
+        'colors.subtitle': 'Cor de destaque: {color}',
+        'colors.violet.name': 'Violeta',
+        'colors.blue.name': 'Azul',
+        'colors.red.name': 'Vermelho',
+        'colors.orange.name': 'Laranja',
+        'colors.yellow.name': 'Amarelo',
+        'colors.green.name': 'Verde',
+        'colors.cyan.name': 'Ciano',
+        'colors.pink.name': 'Rosa'
+      },
+      nl: {
+        'meta.title': 'Noir Absolu — Kleurkiezer',
+        'meta.description': 'Kies en download Noir Absolu in je favoriete kleur, zonder CSS aan te passen.',
+        'language.label': 'Taal kiezen',
+        'language.auto': 'Automatisch',
+        'nav.brandHome': 'Noir Absolu, terug naar boven',
+        'nav.github': 'Project op GitHub bekijken',
+        'hero.eyebrow': 'BetterDiscord + Vencord',
+        'hero.titleLine1': 'Absoluut zwart.',
+        'hero.titleLine2': 'Jouw kleur.',
+        'hero.lead': 'Kies een kleur, download die en activeer hem in Discord. Je hoeft geen bestand te openen of CSS aan te passen.',
+        'actions.chooseColor': 'Kies een kleur',
+        'actions.downloadAll': 'Download alle 8 kleuren',
+        'colors.heading': 'Acht kleuren, één thema',
+        'colors.description': 'Download het bestand voor BetterDiscord of kopieer de kant-en-klare link naar de onlinethema’s van Vencord.',
+        'actions.download': 'Downloaden',
+        'actions.copyVencord': 'Vencord-link kopiëren',
+        'actions.copied': 'Link gekopieerd ✓',
+        'actions.downloadColor': 'Download het thema {color}',
+        'actions.copyColor': 'Kopieer de Vencord-link voor het thema {color}',
+        'steps.ariaLabel': 'Snelle installatie',
+        'steps.download.title': 'Download',
+        'steps.download.text': 'Kies hierboven een kleur of download het volledige pakket.',
+        'steps.install.title': 'Installeer',
+        'steps.install.text': 'Plaats het bestand in de map Themes van BetterDiscord of Vencord.',
+        'steps.activate.title': 'Activeer',
+        'steps.activate.text': 'Activeer maar één Noir Absolu-kleur. Toekomstige updates van het basisthema worden automatisch toegepast.',
+        'toast.copied': 'Vencord-link gekopieerd.',
+        'toast.copyFailed': 'Automatisch kopiëren mislukt.',
+        'colors.subtitle': 'Accentkleur: {color}',
+        'colors.violet.name': 'Paars',
+        'colors.blue.name': 'Blauw',
+        'colors.red.name': 'Rood',
+        'colors.orange.name': 'Oranje',
+        'colors.yellow.name': 'Geel',
+        'colors.green.name': 'Groen',
+        'colors.cyan.name': 'Cyaan',
+        'colors.pink.name': 'Roze'
+      },
+      pl: {
+        'meta.title': 'Noir Absolu — Wybór koloru',
+        'meta.description': 'Wybierz i pobierz Noir Absolu w ulubionym kolorze bez edytowania CSS.',
+        'language.label': 'Wybierz język',
+        'language.auto': 'Automatycznie',
+        'nav.brandHome': 'Noir Absolu, wróć na górę',
+        'nav.github': 'Zobacz projekt na GitHubie',
+        'hero.eyebrow': 'BetterDiscord + Vencord',
+        'hero.titleLine1': 'Absolutna czerń.',
+        'hero.titleLine2': 'Twój kolor.',
+        'hero.lead': 'Wybierz kolor, pobierz go i włącz w Discordzie. Nie musisz otwierać pliku ani edytować CSS.',
+        'actions.chooseColor': 'Wybierz kolor',
+        'actions.downloadAll': 'Pobierz wszystkie 8 kolorów',
+        'colors.heading': 'Osiem kolorów, jeden motyw',
+        'colors.description': 'Pobierz plik do BetterDiscord albo skopiuj gotowy link do motywów online w Vencordzie.',
+        'actions.download': 'Pobierz',
+        'actions.copyVencord': 'Skopiuj link Vencord',
+        'actions.copied': 'Link skopiowany ✓',
+        'actions.downloadColor': 'Pobierz motyw {color}',
+        'actions.copyColor': 'Skopiuj link Vencord do motywu {color}',
+        'steps.ariaLabel': 'Szybka instalacja',
+        'steps.download.title': 'Pobierz',
+        'steps.download.text': 'Wybierz kolor powyżej albo pobierz pełny pakiet.',
+        'steps.install.title': 'Zainstaluj',
+        'steps.install.text': 'Umieść plik w folderze Themes aplikacji BetterDiscord lub Vencord.',
+        'steps.activate.title': 'Włącz',
+        'steps.activate.text': 'Włącz tylko jeden kolor Noir Absolu. Przyszłe aktualizacje motywu bazowego zostaną zastosowane automatycznie.',
+        'toast.copied': 'Skopiowano link Vencord.',
+        'toast.copyFailed': 'Nie udało się skopiować automatycznie.',
+        'colors.subtitle': 'Kolor akcentu: {color}',
+        'colors.violet.name': 'Fioletowy',
+        'colors.blue.name': 'Niebieski',
+        'colors.red.name': 'Czerwony',
+        'colors.orange.name': 'Pomarańczowy',
+        'colors.yellow.name': 'Żółty',
+        'colors.green.name': 'Zielony',
+        'colors.cyan.name': 'Cyjan',
+        'colors.pink.name': 'Różowy'
+      }
+    };
+
+    const DEFAULT_LANGUAGE = 'en';
+    const STORAGE_KEY = 'noir-absolu-language';
+    const SUPPORTED_LANGUAGES = Object.freeze(Object.keys(I18N));
     const toast = document.querySelector('.toast');
-    let toastTimer;
+    const languageSelect = document.querySelector('#language-select');
+    let currentLanguage = DEFAULT_LANGUAGE;
+    let feedbackTimer;
+
+    function normalizeLanguage(tag) {
+      if (typeof tag !== 'string') return null;
+      const base = tag.trim().replace(/_/g, '-').toLowerCase().split('-')[0];
+      return SUPPORTED_LANGUAGES.includes(base) ? base : null;
+    }
+
+    function readSavedLanguage() {
+      try { return normalizeLanguage(localStorage.getItem(STORAGE_KEY)); }
+      catch { return null; }
+    }
+
+    function saveLanguage(language) {
+      try {
+        if (language) localStorage.setItem(STORAGE_KEY, language);
+        else localStorage.removeItem(STORAGE_KEY);
+      } catch {
+        // The site remains usable when browser storage is unavailable.
+      }
+    }
+
+    function detectBrowserLanguage() {
+      let candidates = [];
+      try {
+        candidates = navigator.languages?.length ? Array.from(navigator.languages) : [navigator.language];
+      } catch {
+        // The English fallback below remains available.
+      }
+
+      for (const candidate of candidates) {
+        const language = normalizeLanguage(candidate);
+        if (language) return language;
+      }
+      return DEFAULT_LANGUAGE;
+    }
+
+    function t(key, variables = {}) {
+      const template = I18N[currentLanguage]?.[key] ?? I18N[DEFAULT_LANGUAGE]?.[key];
+      if (template === undefined) return key;
+      return template.replace(/\{(\w+)\}/g, (match, name) =>
+        Object.prototype.hasOwnProperty.call(variables, name) ? variables[name] : match
+      );
+    }
+
+    function resetTransientUi() {
+      clearTimeout(feedbackTimer);
+      document.querySelectorAll('.copy').forEach((button) => {
+        button.textContent = t('actions.copyVencord');
+      });
+      toast.classList.remove('visible');
+      toast.textContent = t('toast.copied');
+    }
+
+    function applyLanguage(language, { persist = false, selectValue = language } = {}) {
+      currentLanguage = normalizeLanguage(language) ?? DEFAULT_LANGUAGE;
+      document.documentElement.lang = currentLanguage;
+      document.title = t('meta.title');
+      document.querySelector('meta[name="description"]')?.setAttribute('content', t('meta.description'));
+
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        element.textContent = t(element.dataset.i18n);
+      });
+      document.querySelectorAll('[data-i18n-aria-label]').forEach((element) => {
+        element.setAttribute('aria-label', t(element.dataset.i18nAriaLabel));
+      });
+
+      document.querySelectorAll('[data-color]').forEach((card) => {
+        const colorKey = card.dataset.color;
+        const colorName = t(`colors.${colorKey}.name`);
+        card.querySelector('[data-color-name]').textContent = colorName;
+        card.querySelector('[data-color-subtitle]').textContent = t('colors.subtitle', { color: colorName });
+        card.querySelector('.download')?.setAttribute('aria-label', t('actions.downloadColor', { color: colorName }));
+        card.querySelector('.copy')?.setAttribute('aria-label', t('actions.copyColor', { color: colorName }));
+      });
+
+      languageSelect.value = selectValue;
+      resetTransientUi();
+      if (persist) saveLanguage(currentLanguage);
+    }
 
     async function copyText(value) {
       if (navigator.clipboard && window.isSecureContext) {
@@ -432,26 +870,47 @@
       input.style.opacity = '0';
       document.body.appendChild(input);
       input.select();
-      document.execCommand('copy');
+      const copied = document.execCommand('copy');
       input.remove();
+      if (!copied) throw new Error('Copy failed');
+    }
+
+    function showCopyFeedback(button, success) {
+      resetTransientUi();
+      if (success) {
+        button.textContent = t('actions.copied');
+        toast.textContent = t('toast.copied');
+      } else {
+        toast.textContent = t('toast.copyFailed');
+      }
+      toast.classList.add('visible');
+      feedbackTimer = setTimeout(resetTransientUi, 2200);
     }
 
     document.querySelectorAll('.copy').forEach((button) => {
       button.addEventListener('click', async () => {
         try {
           await copyText(button.dataset.url);
-          clearTimeout(toastTimer);
-          toast.classList.add('visible');
-          button.textContent = 'Lien copié ✓';
-          toastTimer = setTimeout(() => {
-            toast.classList.remove('visible');
-            button.textContent = 'Copier le lien Vencord';
-          }, 2200);
+          showCopyFeedback(button, true);
         } catch {
-          toast.textContent = 'Impossible de copier automatiquement.';
-          toast.classList.add('visible');
+          showCopyFeedback(button, false);
         }
       });
+    });
+
+    languageSelect.addEventListener('change', (event) => {
+      const requestedLanguage = event.currentTarget.value;
+      if (requestedLanguage === 'auto') {
+        saveLanguage(null);
+        applyLanguage(detectBrowserLanguage(), { selectValue: 'auto' });
+        return;
+      }
+      applyLanguage(requestedLanguage, { persist: true, selectValue: requestedLanguage });
+    });
+
+    const savedLanguage = readSavedLanguage();
+    applyLanguage(savedLanguage ?? detectBrowserLanguage(), {
+      selectValue: savedLanguage ?? 'auto'
     });
   </script>
 </body>

@@ -45,6 +45,7 @@ Ouvrez le [sélecteur de couleurs](https://woozyontop.github.io/Noir-Absolu-Them
 
 - True OLED black (`#000000`) across Discord’s main surfaces
 - Eight preconfigured accent colors with automatic core updates
+- Color selector with automatic browser-language detection (FR, EN, DE, ES, IT, PT, NL, PL)
 - Compact scrollbars and a completely black voice/user panel area
 - Clear styling for links, mentions, replies, selections, buttons, borders, and focus states
 - Compatible with BetterDiscord and Vencord
