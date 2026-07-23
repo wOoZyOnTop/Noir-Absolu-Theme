@@ -4,17 +4,15 @@
  * @authorLink https://wooptimisation.pro
  * @website https://woozyontop.github.io/Noir-Absolu-Theme/
  * @source https://raw.githubusercontent.com/wOoZyOnTop/Noir-Absolu-Theme/main/Noir-Absolu.theme.css
- * @description Choose any accent with the Website button. True-black AMOLED Discord theme. / Choisissez votre couleur via le bouton Website. Thème Discord AMOLED noir absolu.
- * @version 1.4.1
+ * @description True-black AMOLED Discord theme with a customizable accent. Use the Website button to choose any color.
+ * @version 1.4.2
  */
 
 /*
- * Accent / Couleur d'accentuation
+ * Accent color
  * The website creates a ready-to-install custom file, with no CSS editing.
- * Le site crée un fichier personnalisé prêt à installer, sans modifier le CSS.
  *
- * Vencord: the built-in ClientTheme picker overrides these values automatically.
- * Vencord : le sélecteur ClientTheme intégré remplace ces valeurs automatiquement.
+ * Vencord's built-in ClientTheme picker overrides these values automatically.
  */
 :root {
   --noir-accent-hue: 264;
@@ -26,7 +24,7 @@
   --noir-resolved-accent-saturation: var(--theme-s, var(--noir-accent-saturation));
   --noir-resolved-accent-lightness: var(--theme-l, var(--noir-accent-lightness));
 
-  /* Core palette / Palette principale */
+  /* Core palette */
   --noir-accent-hsl: var(--noir-resolved-accent-hue) var(--noir-resolved-accent-saturation) var(--noir-resolved-accent-lightness);
   --noir-link-hsl: var(--noir-resolved-accent-hue) var(--noir-resolved-accent-saturation) 80%;
   --noir-brand-hover-hsl: var(--noir-resolved-accent-hue) var(--noir-resolved-accent-saturation) 76%;
@@ -70,14 +68,14 @@
 }
 
 /*
- * Discord répartit ses couleurs entre deux générations de variables.
- * Les deux sont définies pour rester compatible avec Dark, Darker et Onyx.
+ * Discord currently uses two generations of color variables.
+ * Both are defined to keep every appearance mode visually consistent.
  */
 :is(.theme-dark, .theme-darker, .theme-midnight, .theme-light),
 #app-mount {
   color-scheme: dark;
 
-  /* Surfaces modernes */
+  /* Current surfaces */
   --background-base-lowest: var(--noir-amoled) !important;
   --background-base-lower: var(--noir-panel) !important;
   --background-base-low: var(--noir-surface) !important;
@@ -92,7 +90,7 @@
   --bg-surface-raised: var(--noir-raised) !important;
   --bg-surface-overlay-tmp: var(--noir-raised) !important;
 
-  /* Surfaces historiques encore utilisées par certains écrans/plugins */
+  /* Legacy surfaces still used by some screens and add-ons */
   --background-primary: var(--noir-amoled) !important;
   --background-secondary: var(--noir-panel) !important;
   --background-secondary-alt: var(--noir-surface) !important;
@@ -122,7 +120,7 @@
   --deprecated-text-input-bg: var(--noir-surface) !important;
   --deprecated-text-input-border: var(--noir-border) !important;
 
-  /* États interactifs */
+  /* Interactive states */
   --background-mod-muted: rgba(255, 255, 255, 0.035) !important;
   --background-mod-subtle: var(--noir-hover) !important;
   --background-mod-normal: var(--noir-active) !important;
@@ -137,7 +135,7 @@
   --message-background-hover: rgba(255, 255, 255, 0.032) !important;
   --message-background-hover-default: rgba(255, 255, 255, 0.032) !important;
 
-  /* Bordures et ombres */
+  /* Borders and shadows */
   --border-muted: rgba(255, 255, 255, 0.055) !important;
   --border-subtle: var(--noir-border) !important;
   --border-normal: var(--noir-border-strong) !important;
@@ -150,7 +148,7 @@
   --legacy-elevation-low: 0 1px 0 var(--noir-border) !important;
   --legacy-elevation-high: var(--noir-shadow) !important;
 
-  /* Texte */
+  /* Text */
   --header-primary: var(--noir-text) !important;
   --header-secondary: var(--noir-text-soft) !important;
   --text-normal: var(--noir-text) !important;
@@ -181,7 +179,7 @@
   --interactive-active: #ffffff !important;
   --interactive-muted: #656b75 !important;
 
-  /* Identité colorée de Discord : boutons, badges et éléments de marque. */
+  /* Discord brand colors used by buttons, badges, and branded controls */
   --brand-360: var(--noir-link-hover) !important;
   --brand-400: var(--noir-link) !important;
   --brand-500: var(--noir-accent) !important;
@@ -202,7 +200,7 @@
   --button-filled-brand-background-active: var(--noir-brand-active) !important;
   --button-filled-brand-text: var(--noir-on-accent) !important;
 
-  /* Contrôles */
+  /* Controls */
   --button-secondary-background: var(--noir-raised-hover) !important;
   --button-secondary-background-hover: var(--noir-button-hover) !important;
   --button-secondary-background-active: var(--noir-button-active) !important;
@@ -215,29 +213,26 @@
   --scrollbar-auto-scrollbar-color-track: var(--noir-amoled) !important;
 }
 
-/* Fond racine : empêche un flash gris pendant les changements d'écran. */
+/* The root background prevents gray flashes during page transitions. */
 html,
 body,
 #app-mount {
   background: var(--noir-amoled) !important;
 }
 
-/* Écrans principaux. Les noms fonctionnels résistent aux suffixes hashés. */
+/* Main surfaces use exact module classes to keep style matching inexpensive. */
 #app-mount :is(
-  [class*="chatContent_"],
-  [class*="contentRegion_"],
-  [class*="contentRegionScroller_"],
-  [class*="standardSidebarView_"],
-  [class*="peopleColumn_"],
-  [class*="nowPlayingColumn_"],
-  [class*="tabBody_"],
-  [class*="applicationStore_"],
-  [class*="mainPageScroller_"],
-  [class*="shopScroll_"],
-  [class*="pageContainer_"],
-  [class*="noChannel_"],
-  [class*="emptyPage_"],
-  [class*="emptySearchWrapper_"]
+  .chatContent_f75fb0,
+  .content_f75fb0,
+  .contentRegion__23e6b,
+  .contentRegionScroller__23e6b,
+  .standardSidebarView__23e6b,
+  .peopleColumn__133bf,
+  .nowPlayingColumn__133bf,
+  .tabBody__133bf,
+  .mainPageScroller__80907,
+  .pageContainer__09fde,
+  .emptySearchWrapper__83bd4
 ) {
   background-color: var(--noir-amoled) !important;
 }
@@ -246,15 +241,17 @@ body,
   background-color: var(--noir-amoled) !important;
 }
 
-/* Colonnes latérales : toujours noires, avec juste assez de séparation. */
+/* Side columns stay black with a subtle separation. */
 #app-mount :is(
-  [class*="guilds_"],
-  [class*="sidebar_"],
-  [class*="sidebarRegionScroller_"],
-  [class*="privateChannels_"],
-  [class*="membersWrap_"],
-  [class*="members_"],
-  [class*="panels_"]
+  .guilds__5e434,
+  .sidebar__1add6,
+  .sidebar__23e6b,
+  .sidebar__5e434,
+  .sidebarRegionScroller__23e6b,
+  .privateChannels_e6b769,
+  .membersWrap_c8ffbb,
+  .members_c8ffbb,
+  .panels__5e434
 ) {
   background-color: var(--noir-panel) !important;
   border-color: var(--noir-border) !important;
@@ -264,40 +261,55 @@ body,
   background-color: var(--noir-panel) !important;
 }
 
-/* Socle des panneaux utilisateur et vocal : noir AMOLED jusque dans les marges. */
-#app-mount [class*="panels_"] {
+/* User and voice panels remain true black without relational selectors. */
+#app-mount :is(
+  .panels__5e434,
+  .connection__41de9,
+  .rtcConnectionStatus__06d62,
+  .panelContainer_a83780
+) {
   background: var(--noir-amoled) !important;
+  border-color: var(--noir-border) !important;
 }
 
-/* Barre supérieure et séparateurs de structure. */
 #app-mount :is(
-  [class*="container_"][class*="themed_"],
-  [class*="titleContainer_"],
-  [class*="headerBar_"],
-  [class*="tabBar_"]
+  .panelRow_a83780,
+  .buttonSection_a83780,
+  .rtcConnectionStatusWrapper__06d62
+) {
+  background: transparent !important;
+}
+
+/* Header bars and structural separators. */
+#app-mount :is(
+  .themed__9293f,
+  .titleContainer__0d97c,
+  .titleContainer_f75fb0,
+  .tabBar__133bf
 ) {
   background-color: var(--noir-amoled) !important;
   border-color: var(--noir-border) !important;
 }
 
-/* Zone de saisie, recherche et champs. */
+/* Composer, search, and text fields. */
 #app-mount :is(
-  [class*="scrollableContainer_"],
-  [class*="themedBackground_"],
-  [class*="searchBar_"],
-  [class*="searchBarComponent_"]
+  .scrollableContainer__74017,
+  .themedBackground__74017,
+  .searchBar__5ec2f,
+  .searchBar_c322aa,
+  .searchBar_cba592,
+  .searchBar_e6b769
 ) {
   background-color: var(--noir-surface) !important;
   border-color: var(--noir-border) !important;
 }
 
-#app-mount [class*="scrollableContainer_"] {
+#app-mount .scrollableContainer__74017 {
   border: 1px solid var(--noir-border) !important;
   box-shadow: none !important;
 }
 
-#app-mount input,
-#app-mount textarea {
+#app-mount :is(input, textarea, [contenteditable="true"][role="textbox"]) {
   color: var(--noir-text) !important;
   caret-color: var(--noir-accent) !important;
 }
@@ -308,180 +320,134 @@ body,
   opacity: 1 !important;
 }
 
-/* Liens de messages et d'embeds : couleur vive, sans recolorer les boutons. */
-#app-mount :is([class*="markup_"], [class*="embed_"]) a:not([role="button"]) {
+/* Message and embed links use the selected accent without recoloring buttons. */
+#app-mount [data-list-id="chat-messages"] a[href]:not([role="button"]) {
   color: var(--noir-link) !important;
   text-decoration-color: hsl(var(--noir-link-hsl) / var(--noir-link-underline-alpha)) !important;
   text-underline-offset: 2px;
 }
 
-#app-mount :is([class*="markup_"], [class*="embed_"]) a:not([role="button"]):hover {
+#app-mount [data-list-id="chat-messages"] a[href]:not([role="button"]):hover {
   color: var(--noir-link-hover) !important;
   text-decoration-color: currentColor !important;
 }
 
-/* Menus, autocomplétion, sélecteurs et fenêtres flottantes. */
+/* Menus, autocomplete panels, and expression pickers. */
 #app-mount :is(
   [role="menu"],
   [role="listbox"],
-  [class*="menu_"],
-  [class*="autocomplete_"],
-  [class*="messagesPopoutWrap_"],
-  [class*="contentWrapper_"],
-  [class*="popoutList_"],
-  [class*="quickSelectPopout_"],
-  [class*="browser_"]
+  .autocomplete__13533,
+  .autocomplete__6b0e0,
+  .contentWrapper__08434,
+  .contentWrapper__0d616,
+  .contentWrapper__3d3b0,
+  .contentWrapper__8efcc
 ) {
   background-color: var(--noir-raised) !important;
   border-color: var(--noir-border-strong) !important;
   box-shadow: var(--noir-shadow) !important;
 }
 
-#app-mount [class*="tooltip_"] {
+#app-mount [role="tooltip"] {
   background-color: var(--noir-tooltip) !important;
   color: var(--noir-text) !important;
   border: 1px solid var(--noir-border-strong) !important;
 }
 
-#app-mount [role="tooltip"] {
-  background-color: var(--noir-tooltip) !important;
-  color: var(--noir-text) !important;
-  border-color: var(--noir-border-strong) !important;
-}
-
-/* Modales et paramètres. */
-#app-mount [role="dialog"]:not([class*="positionContainer_"]) {
+/* Modal surfaces rely on stable accessibility attributes. */
+#app-mount [role="dialog"][aria-modal="true"] {
   background-color: var(--noir-panel) !important;
   border-color: var(--noir-border-strong) !important;
   box-shadow: var(--noir-shadow) !important;
 }
 
-#app-mount [role="dialog"]:not([class*="positionContainer_"]) :is(
-  [class*="root_"],
-  [class*="content_"],
-  [class*="footer_"]
-) {
-  border-color: var(--noir-border) !important;
-}
-
-#app-mount [role="dialog"]:not([class*="positionContainer_"]) [class*="footer_"] {
+#app-mount [role="dialog"][aria-modal="true"] footer {
   background-color: var(--noir-amoled) !important;
+  border-color: var(--noir-border) !important;
 }
 
-/* Cartes, embeds et blocs de réglages. */
+/* Cards and embeds. */
 #app-mount :is(
-  [class*="accountProfileCard_"],
-  [class*="messageGroupWrapper_"],
-  [class*="embedFull_"],
-  [class*="paymentPane_"],
-  [class*="settingCard_"],
-  [class*="guildContainer_"]
+  .embedFull__623de,
+  .guildContainer_f778dc,
+  .bd-addon-card
 ) {
   background-color: var(--noir-surface) !important;
   border-color: var(--noir-border) !important;
 }
 
-/* Panneau de connexion vocale : noir pur, sans teinte de la variante. */
-#app-mount [class*="panels_"] :is(
-  [class*="connection_"],
-  [class*="rtcConnectionStatus_"],
-  [class*="panelContainer_"]:has([class*="rtcConnectionStatus_"])
-) {
-  background: var(--noir-amoled) !important;
-  border-color: var(--noir-border) !important;
-}
-
-#app-mount [class*="panels_"] [class*="panelContainer_"]:has([class*="rtcConnectionStatus_"]) :is(
-  [class*="panelRow_"],
-  [class*="buttonSection_"],
-  [class*="rtcConnectionStatusWrapper_"]
-) {
-  background: transparent !important;
-}
-
-#app-mount [class*="markup_"] code,
-#app-mount pre {
+#app-mount [data-list-id="chat-messages"] :is(pre, code) {
   background-color: var(--noir-surface) !important;
   border-color: var(--noir-border) !important;
 }
 
-/* Messages survolés, réponses et mentions : visibles sans voile gris. */
-#app-mount [class*="messageListItem_"] [class*="message_"]:hover,
-#app-mount [class*="message_"][class*="selected_"] {
-  background-color: var(--noir-hover) !important;
-}
-
-#app-mount [class*="replying_"] {
-  background-color: hsl(var(--noir-accent-hsl) / var(--noir-reply-alpha)) !important;
-}
-
-#app-mount [class*="mentioned_"] {
-  background-color: hsl(var(--noir-accent-hsl) / var(--noir-mention-alpha)) !important;
-}
-
-#app-mount [class*="replying_"]::before {
-  background-color: var(--noir-accent) !important;
-}
-
-#app-mount [class*="mentioned_"]::before {
-  background-color: var(--noir-accent) !important;
-}
-
-/* Sélection active des salons, amis et entrées de menu. */
+/* Selected items use exact state attributes. */
 #app-mount :is(
-  [class*="modeSelected_"],
-  [class*="selected_"][role="listitem"],
-  [class*="item_"][aria-selected="true"]
+  [aria-selected="true"],
+  [aria-current="page"]
 ) {
   background-color: var(--noir-selected) !important;
 }
 
-/* Scrollbars sobres, mais encore faciles à saisir. */
-#app-mount * {
+/* Discord's two current scroller modules keep scrollbars compact. */
+#app-mount :is(
+  .scrollerBase__99f8c,
+  .scrollerBase_d125d2
+) {
   scrollbar-width: thin;
   scrollbar-color: var(--noir-scrollbar-thumb) transparent;
 }
 
-#app-mount ::-webkit-scrollbar {
+#app-mount :is(
+  .scrollerBase__99f8c,
+  .scrollerBase_d125d2
+)::-webkit-scrollbar {
   width: var(--noir-scrollbar-size) !important;
   height: var(--noir-scrollbar-size) !important;
 }
 
-#app-mount ::-webkit-scrollbar-track,
-#app-mount ::-webkit-scrollbar-track-piece {
+#app-mount :is(
+  .scrollerBase__99f8c,
+  .scrollerBase_d125d2
+)::-webkit-scrollbar-track {
   background: transparent !important;
 }
 
-#app-mount ::-webkit-scrollbar-thumb {
+#app-mount :is(
+  .scrollerBase__99f8c,
+  .scrollerBase_d125d2
+)::-webkit-scrollbar-thumb {
   background: var(--noir-scrollbar-thumb) !important;
   border: 2px solid transparent !important;
   background-clip: padding-box !important;
   border-radius: 999px !important;
 }
 
-#app-mount ::-webkit-scrollbar-thumb:hover {
+#app-mount :is(
+  .scrollerBase__99f8c,
+  .scrollerBase_d125d2
+)::-webkit-scrollbar-thumb:hover {
   background: var(--noir-scrollbar-thumb-hover) !important;
   background-clip: padding-box !important;
 }
 
-#app-mount ::-webkit-scrollbar-button,
-#app-mount ::-webkit-scrollbar-corner {
-  display: none !important;
-  background: transparent !important;
-}
-
-/* Lisibilité et navigation clavier. */
-#app-mount ::selection {
-  background: hsl(var(--noir-accent-hsl) / var(--noir-selection-alpha));
-  color: #ffffff;
-}
-
-#app-mount :focus-visible {
+/* Keyboard focus remains visible on interactive controls. */
+#app-mount :is(
+  a[href],
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"],
+  [role="tab"],
+  [role="menuitem"],
+  [role="option"]
+):focus-visible {
   outline: 2px solid var(--noir-accent) !important;
   outline-offset: 2px !important;
 }
 
-/* L'éditeur Slate rogne son contour de focus et n'en laisse voir que deux barres verticales. */
+/* Slate clips its focus outline, so the composer uses its own border instead. */
 #app-mount :is(
   [data-slate-editor="true"],
   [contenteditable="true"][role="textbox"]
@@ -489,8 +455,8 @@ body,
   outline: none !important;
 }
 
-/* Accès direct au configurateur depuis la carte du thème BetterDiscord. */
-#app-mount .bd-addon-card a[href^="https://woozyontop.github.io/Noir-Absolu-Theme"] {
+/* Direct access to the color configurator from the BetterDiscord theme card. */
+#app-mount .bd-addon-card a[href="https://woozyontop.github.io/Noir-Absolu-Theme/"] {
   display: inline-flex !important;
   min-width: 220px;
   min-height: 38px;
@@ -509,13 +475,13 @@ body,
   transition: background-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
 }
 
-#app-mount .bd-addon-card a[href^="https://woozyontop.github.io/Noir-Absolu-Theme"]::after {
+#app-mount .bd-addon-card a[href="https://woozyontop.github.io/Noir-Absolu-Theme/"]::after {
   content: "Choose a color / Choisir une couleur";
   font-size: 13px;
   line-height: 1;
 }
 
-#app-mount .bd-addon-card a[href^="https://woozyontop.github.io/Noir-Absolu-Theme"]:hover {
+#app-mount .bd-addon-card a[href="https://woozyontop.github.io/Noir-Absolu-Theme/"]:hover {
   background: var(--noir-brand-hover) !important;
   box-shadow: 0 9px 28px hsl(var(--noir-accent-hsl) / 0.38);
   transform: translateY(-1px);
