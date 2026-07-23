@@ -4,8 +4,8 @@
  * @authorLink https://wooptimisation.pro
  * @website https://woozyontop.github.io/Noir-Absolu-Theme/
  * @source https://raw.githubusercontent.com/wOoZyOnTop/Noir-Absolu-Theme/main/Noir-Absolu.theme.css
- * @description True-black AMOLED Discord theme with a customizable accent. / Thème Discord AMOLED noir profond avec accent personnalisable.
- * @version 1.4.0
+ * @description Choose any accent with the Website button. True-black AMOLED Discord theme. / Choisissez votre couleur via le bouton Website. Thème Discord AMOLED noir absolu.
+ * @version 1.4.1
  */
 
 /*
@@ -487,4 +487,36 @@ body,
   [contenteditable="true"][role="textbox"]
 ):focus-visible {
   outline: none !important;
+}
+
+/* Accès direct au configurateur depuis la carte du thème BetterDiscord. */
+#app-mount .bd-addon-card a[href^="https://woozyontop.github.io/Noir-Absolu-Theme"] {
+  display: inline-flex !important;
+  min-width: 220px;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 14px;
+  border: 1px solid var(--noir-accent) !important;
+  border-radius: 9px;
+  background: var(--noir-accent) !important;
+  box-shadow: 0 7px 22px hsl(var(--noir-accent-hsl) / 0.28);
+  color: var(--noir-on-accent) !important;
+  font-size: 0 !important;
+  font-weight: 800;
+  text-decoration: none !important;
+  transition: background-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+}
+
+#app-mount .bd-addon-card a[href^="https://woozyontop.github.io/Noir-Absolu-Theme"]::after {
+  content: "Choose a color / Choisir une couleur";
+  font-size: 13px;
+  line-height: 1;
+}
+
+#app-mount .bd-addon-card a[href^="https://woozyontop.github.io/Noir-Absolu-Theme"]:hover {
+  background: var(--noir-brand-hover) !important;
+  box-shadow: 0 9px 28px hsl(var(--noir-accent-hsl) / 0.38);
+  transform: translateY(-1px);
 }
